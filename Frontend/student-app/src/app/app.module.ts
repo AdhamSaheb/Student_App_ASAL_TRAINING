@@ -8,6 +8,16 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { StudentListComponent } from './Components/Student-Components/student-list/student-list.component';
 import { CourseListComponent } from './Components/Courses-Components/course-list/course-list.component';
 import { MainComponentComponent } from './Components/main-component/main-component.component';
+import { StudentDetailComponent } from './Components/Student-Components/student-detail/student-detail.component';
+import { HttpClientModule } from '@angular/common/http';
+
+import { StoreModule } from '@ngrx/store';
+import { studentReducer } from './Store/Reducers/student.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { StudentEffects } from './Store/Effects/students.effects';
+import {  StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -16,11 +26,21 @@ import { MainComponentComponent } from './Components/main-component/main-compone
     FooterComponent,
     StudentListComponent,
     CourseListComponent,
-    MainComponentComponent
+    MainComponentComponent,
+    StudentDetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    StoreModule.forRoot({ students : studentReducer , }),
+    EffectsModule.forRoot([StudentEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+    }),
+    BrowserAnimationsModule,
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
