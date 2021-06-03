@@ -24,8 +24,7 @@ public class Course implements Serializable {
     public String name;
     public int maximumParticipants;
 
-    @ManyToMany(mappedBy = "registeredCourses")
-    @JsonManagedReference
+    @ManyToMany(mappedBy = "registeredCourses",fetch = FetchType.LAZY)
     public List<Student> enrolledStudents;
 
     public Course() {

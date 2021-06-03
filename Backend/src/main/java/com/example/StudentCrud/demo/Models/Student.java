@@ -24,11 +24,11 @@ public class Student implements Serializable {
     public
     String firstName;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "studentCourses",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
+            joinColumns = @JoinColumn(name = "student_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id",referencedColumnName = "id"))
     List<Course> registeredCourses;
 
     public Student() {
