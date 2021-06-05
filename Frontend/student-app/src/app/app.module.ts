@@ -17,6 +17,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { StudentEffects } from './Store/Effects/students.effects';
 import {  StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { AddStudentModalComponent } from './Components/Student-Components/add-student-modal/add-student-modal.component';
+import { FormsModule } from '@angular/forms';
+import { EditStudentModalComponent } from './Components/Student-Components/edit-student-modal/edit-student-modal.component';
+import { CourseDetailComponent } from './Components/Courses-Components/course-detail/course-detail.component';
+
 
 
 @NgModule({
@@ -27,7 +33,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StudentListComponent,
     CourseListComponent,
     MainComponentComponent,
-    StudentDetailComponent
+    StudentDetailComponent,
+    AddStudentModalComponent,
+    EditStudentModalComponent,
+    CourseDetailComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -39,8 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       maxAge: 25, // Retains last 25 states
     }),
     BrowserAnimationsModule,
-
-    
+    ToastrModule.forRoot(), // ToastrModule added
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

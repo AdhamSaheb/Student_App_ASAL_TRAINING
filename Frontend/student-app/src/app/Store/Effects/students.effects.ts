@@ -7,7 +7,7 @@ import * as STUDENT_ACTIONS from '../Actions/student.actions';
 
 @Injectable()
 export class StudentEffects {
-
+    //load students
     loadStudents$ = createEffect(() => this.actions$.pipe(
         ofType(STUDENT_ACTIONS.load_students),
         switchMap(() => this.studentHttpService.getStudents()),
@@ -15,9 +15,7 @@ export class StudentEffects {
         catchError((err) => of(STUDENT_ACTIONS.load_students_failed()))
     )
     );
-
-
-
+    //remove student
     removeStudent$ = createEffect(
         () => this.actions$.pipe(
             ofType(STUDENT_ACTIONS.remove_student),
@@ -28,7 +26,26 @@ export class StudentEffects {
             ))
 
     ));
-
+    //add student
+    addStudent$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(STUDENT_ACTIONS.add_student),
+            mergeMap((action) => this.studentHttpService.addStudent(action.student).pipe(
+                map((studentResponse) => STUDENT_ACTIONS.add_student_success({ student: studentResponse })),
+                catchError((err) => of(STUDENT_ACTIONS.add_student_failed() )
+                ),
+            ))
+    ));
+    //update student
+    updateStudent$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(STUDENT_ACTIONS.update_student),
+            mergeMap((action) => this.studentHttpService.updateStudent(action.student).pipe(
+                map((studentResponse) => STUDENT_ACTIONS.update_student_success({ student: studentResponse })),
+                catchError((err) => of(STUDENT_ACTIONS.update_student_failed() )
+                ),
+            ))
+    ));
 
 
     constructor(
