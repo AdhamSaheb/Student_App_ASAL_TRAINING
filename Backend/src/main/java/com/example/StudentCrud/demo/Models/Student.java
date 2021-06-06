@@ -24,6 +24,7 @@ public class Student implements Serializable {
     public
     String firstName;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "studentCourses",

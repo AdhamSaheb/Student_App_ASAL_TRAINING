@@ -1,16 +1,16 @@
 
 
-<app-add-student-modal  (addStudentEventEmitter)="createStudent($event)"></app-add-student-modal>
+<app-add-student-modal  (addStudentEventEmitter)="createStudent($event)">
+
+</app-add-student-modal>
 
 <div *ngIf="!isLoading ; else loading" class="row justify-content-center">
-
-
-    <div class="col-md-9">
+<div class="col-md-9">
         <table>
             <tr>
             <th>Id</th>
             <th>First Name</th>
-            <th></th>
+            <th>Actions</th>
             </tr>
             <tr *ngFor ="let student of students" >
             <td style="text-align: center;">{{student.id}}</td>

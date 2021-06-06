@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Course } from 'src/app/Models/Course.model';
 
 @Component({
   selector: 'app-course-detail',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() course : Course ; 
+  constructor(private modalService: NgbActiveModal) { }
 
   ngOnInit(): void {
   }
+  close() {
+    this.modalService.close();
+  }
+  // open(content) {
+  //   this.modalService.(content, {ariaLabelledBy: 'modal-basic-title'})
+  // }
 
 }

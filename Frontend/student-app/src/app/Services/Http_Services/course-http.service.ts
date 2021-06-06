@@ -31,4 +31,7 @@ export class CourseHttpService {
   addStudentToCourse(course : Course, student : Student) : Observable<Course> {
     return this.http.post<Course>(this.hostName+"courses/" + course.id  + "/addStudent" + student.id , []);
   }
+  removeStudentFromCourse(course : Course, student : Student) : Observable<Course> {
+    return this.http.post<Course>(this.hostName+"courses/" + course.id  + "/removeStudent" + student.id , []);
+  }
 }

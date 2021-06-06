@@ -22,6 +22,10 @@ import { AddStudentModalComponent } from './Components/Student-Components/add-st
 import { FormsModule } from '@angular/forms';
 import { EditStudentModalComponent } from './Components/Student-Components/edit-student-modal/edit-student-modal.component';
 import { CourseDetailComponent } from './Components/Courses-Components/course-detail/course-detail.component';
+import { courseReducer } from './Store/Reducers/course.reducer';
+import { CoursesEffects } from './Store/Effects/courses.effects';
+import { CourseModalComponent } from './Components/Courses-Components/course-modal/course-modal.component';
+import { ConfirmationModalComponent } from './Components/Courses-Components/confirmation-modal/confirmation-modal.component';
 
 
 
@@ -36,15 +40,17 @@ import { CourseDetailComponent } from './Components/Courses-Components/course-de
     StudentDetailComponent,
     AddStudentModalComponent,
     EditStudentModalComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    CourseModalComponent,
+    ConfirmationModalComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({ students : studentReducer , }),
-    EffectsModule.forRoot([StudentEffects]),
+    StoreModule.forRoot({ students : studentReducer ,courses: courseReducer }),
+    EffectsModule.forRoot([StudentEffects,CoursesEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),

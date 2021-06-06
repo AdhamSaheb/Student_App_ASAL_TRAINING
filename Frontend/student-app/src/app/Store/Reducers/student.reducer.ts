@@ -10,7 +10,6 @@ export const initialState: StudentState = {
 
 const _studentReducer = createReducer(
   initialState,
-  //todo : add loading state on load students  ? 
 /* Load students Actions */
   on(
     STUDENT_ACTIONS.load_students_success,
@@ -75,3 +74,7 @@ const _studentReducer = createReducer(
 export function studentReducer(state: any, action: any) {
   return _studentReducer(state, action);
 }
+
+
+
+//TODO : refactor all the actions that set loading to true in one action

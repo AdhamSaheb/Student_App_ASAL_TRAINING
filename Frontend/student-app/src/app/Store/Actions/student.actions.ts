@@ -18,8 +18,8 @@ export const load_students_failed = createAction('[Student List Component] LoadS
 export const remove_student_success = createAction('[Student List Component] RemoveStudentSuccess',props<{student:Student}>());
 export const remove_student_failed = createAction('[Student List Component] RemoveStudentFailed');
 //ADD
-export const add_student_success = createAction('[async Student List Component] AddStudentSuccess',props<{student : Student}>() );
-export const add_student_failed = createAction('[async Student List Component] AddStudentFailed');
+export const add_student_success = createAction('[Student List Component] AddStudentSuccess',props<{student : Student}>() );
+export const add_student_failed = createAction('[Student List Component] AddStudentFailed');
 //UPDATE
-export const update_student_success = createAction('[async Student List Component] UpdateUserSuccess',props<{student : Student}>() );
-export const update_student_failed = createAction('[async Student List Component] UpdateUserFailed');
+export const update_student_success = createAction('[Student List Component] UpdateUserSuccess',props<{student : Student}>() );
+export const update_student_failed = createAction('[Student List Component] UpdateUserFailed');

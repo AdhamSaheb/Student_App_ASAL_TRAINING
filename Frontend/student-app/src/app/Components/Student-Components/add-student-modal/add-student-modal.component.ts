@@ -9,6 +9,7 @@ import { Student } from 'src/app/Models/Student.model';
   templateUrl: './add-student-modal.component.html',
   styleUrls: ['./add-student-modal.component.css']
 })
+
 export class AddStudentModalComponent {
    firstName : string = "" ;
    @Output() addStudentEventEmitter = new EventEmitter<string>();

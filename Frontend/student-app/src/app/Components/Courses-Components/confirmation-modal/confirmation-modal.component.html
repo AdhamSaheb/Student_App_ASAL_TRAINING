@@ -1,0 +1,23 @@
+<div #content >
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- MODAL BODY -->
+    <div class="modal-body">
+        <p> {{message}} </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="closeModal()">No</button>
+      <button type="button" class="btn btn-success" (click)="confirm()">Yes</button>
+    </div>
+</div>
+
+<ng-template #empty>
+    <h4 style="text-align: center;">No Students Enrolled</h4>
+</ng-template>
+
+  
