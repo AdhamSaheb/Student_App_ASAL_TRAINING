@@ -10,6 +10,17 @@ export const initialState: StudentState = {
 
 const _studentReducer = createReducer(
   initialState,
+/*Loading */
+  on(
+    STUDENT_ACTIONS.load_students,
+    STUDENT_ACTIONS.add_student,
+    STUDENT_ACTIONS.update_student,
+    STUDENT_ACTIONS.remove_student,
+    state =>
+    ({
+      ...state,
+      loading: true,
+    })),
 /* Load students Actions */
   on(
     STUDENT_ACTIONS.load_students_success,
@@ -22,14 +33,6 @@ const _studentReducer = createReducer(
 
     /*Remove Student Acions */
   on(
-    STUDENT_ACTIONS.remove_student,
-    STUDENT_ACTIONS.load_students,
-    state =>
-    ({
-      ...state,
-      loading: true,
-    })),
-  on(
     STUDENT_ACTIONS.remove_student_success,
     (state, action) =>
     ({
@@ -39,36 +42,22 @@ const _studentReducer = createReducer(
     })),
   /*Add student actions */
   on(
-    STUDENT_ACTIONS.add_student,
-    (state) =>
+    STUDENT_ACTIONS.add_student_success,
+    (state, action) =>
     ({
       ...state,
-      loading: true
+      students: state.students.concat(action.student),
+      loading: false
     })),
-    on(
-      STUDENT_ACTIONS.add_student_success,
-      (state, action) =>
-      ({
-        ...state,
-        students: state.students.concat(action.student),
-        loading: false
-      })),
-    /* Edit Student Actions */
-    on(
-      STUDENT_ACTIONS.update_student,
-      (state) =>
-      ({
-        ...state,
-        loading: true
-      })),
-      on(
-        STUDENT_ACTIONS.update_student_success,
-        (state, action) =>
-        ({
-          ...state,
-          students: state.students.map(student => (student.id == action.student.id) ? action.student : student ),
-          loading: false
-        })),
+    /* Update Student Actions */
+  on(
+    STUDENT_ACTIONS.update_student_success,
+    (state, action) =>
+    ({
+      ...state,
+      students: state.students.map(student => (student.id == action.student.id) ? action.student : student ),
+      loading: false
+    })),
 );
 
 export function studentReducer(state: any, action: any) {

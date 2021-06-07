@@ -16,40 +16,37 @@ export class StudentEffects {
     )
     );
     //remove student
-    removeStudent$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(STUDENT_ACTIONS.remove_student),
-            mergeMap((action) => this.studentHttpService.removeStudent(action.student).pipe(
-                map(() => STUDENT_ACTIONS.remove_student_success({ student: action.student })),
-                catchError((err) => of(STUDENT_ACTIONS.remove_student_failed() )
-                ),
-            ))
+    removeStudent$ = createEffect(() => this.actions$.pipe(
+        ofType(STUDENT_ACTIONS.remove_student),
+        mergeMap((action) => this.studentHttpService.removeStudent(action.student).pipe(
+            map(() => STUDENT_ACTIONS.remove_student_success({ student: action.student })),
+            catchError((err) => of(STUDENT_ACTIONS.remove_student_failed() )
+            ),
+        ))
 
     ));
     //add student
-    addStudent$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(STUDENT_ACTIONS.add_student),
-            mergeMap((action) => this.studentHttpService.addStudent(action.student).pipe(
-                map((studentResponse) => STUDENT_ACTIONS.add_student_success({ student: studentResponse })),
-                catchError((err) => of(STUDENT_ACTIONS.add_student_failed() )
-                ),
-            ))
+    addStudent$ = createEffect(() => this.actions$.pipe(
+        ofType(STUDENT_ACTIONS.add_student),
+        mergeMap((action) => this.studentHttpService.addStudent(action.student).pipe(
+            map((studentResponse) => STUDENT_ACTIONS.add_student_success({ student: studentResponse })),
+            catchError((err) => of(STUDENT_ACTIONS.add_student_failed() )
+            ),
+        ))
     ));
     //update student
-    updateStudent$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(STUDENT_ACTIONS.update_student),
-            mergeMap((action) => this.studentHttpService.updateStudent(action.student).pipe(
-                map((studentResponse) => STUDENT_ACTIONS.update_student_success({ student: studentResponse })),
-                catchError((err) => of(STUDENT_ACTIONS.update_student_failed() )
-                ),
-            ))
+    updateStudent$ = createEffect(() => this.actions$.pipe(
+        ofType(STUDENT_ACTIONS.update_student),
+        mergeMap((action) => this.studentHttpService.updateStudent(action.student).pipe(
+            map((studentResponse) => STUDENT_ACTIONS.update_student_success({ student: studentResponse })),
+            catchError((err) => of(STUDENT_ACTIONS.update_student_failed() )
+            ),
+        ))
     ));
 
 
     constructor(
         private actions$: Actions,
         private studentHttpService: StudentHttpService
-    ) { }
+    ) {}
 }

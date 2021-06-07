@@ -23,7 +23,7 @@ const _courseReducer = createReducer(
         ...state,
         loading: true
     })),
-
+    /* Load Courses */
     on(
     ACTIONS.load_courses_success,
     (state, action) =>
@@ -33,26 +33,26 @@ const _courseReducer = createReducer(
         loading: false
     })),
     /*Add course Course Acions */
-  on(
-    ACTIONS.add_course_success,
-    (state,action) =>
-    ({
-      ...state,
-      courses : state.courses.concat(action.course),
-      loading: false,
-    })),
-    /* Update Course */
-  on(
-    ACTIONS.update_course_success,
-    (state, action) =>
-    ({
-      ...state,
-      courses: state.courses.map(course => (course.id == action.course.id) ? action.course : course),
-      loading: false
-    })),
-    /* Delete Course */
     on(
-        ACTIONS.remove_courses,
+      ACTIONS.add_course_success,
+      (state,action) =>
+      ({
+        ...state,
+        courses : state.courses.concat(action.course),
+        loading: false,
+      })),
+      /* Update Course */
+    on(
+      ACTIONS.update_course_success,
+      (state, action) =>
+      ({
+        ...state,
+        courses: state.courses.map(course => (course.id == action.course.id) ? action.course : course),
+        loading: false
+      })),
+      /* Delete Course */
+    on(
+        ACTIONS.remove_courses, // Not sure about this one 
         (state, action) =>
         ({
           ...state,
@@ -77,8 +77,6 @@ const _courseReducer = createReducer(
         courses: state.courses.map(course => (course.id === action.course.id) ? action.course : course),
         loading: false
       })),
-
-
 );
 
 export function courseReducer(state: any, action: any) {

@@ -15,14 +15,17 @@ export class CourseDetailComponent implements OnInit {
   @Input() course : Course ; 
   students: Student[]= [] ;
   studentOptions : Student[] ;
-  disabledStudent : Student =  new Student(-1,"none",[]) ; // student inside the selector, set to none by default 
+  disabledStudent : Student =  new Student(-1,"none") ; // student inside the selector, set to none by default 
   selectedStudent : Student  = this.disabledStudent ;
   constructor(private modalService: NgbActiveModal , public studentService : StudentService) { }
 
   ngOnInit(): void {
-     this.studentService.getStudents().subscribe((response) => this.students =response );
-     const enrolledStudentsIds = this.course.enrolledStudents.map((student) => student.id);
-     this.studentOptions = this.students.filter((student)=> !enrolledStudentsIds.includes(student.id) );
+     this.studentService.getStudents().subscribe((response)=>{ 
+       if(response) {
+          this.students =response;
+          const enrolledStudentsIds = this.course.enrolledStudents.map((student) => student.id);
+          this.studentOptions = this.students.filter((student)=> !enrolledStudentsIds.includes(student.id) );
+        }});
   }
 
   close() {

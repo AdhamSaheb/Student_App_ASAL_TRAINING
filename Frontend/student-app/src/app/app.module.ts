@@ -18,16 +18,14 @@ import { StudentEffects } from './Store/Effects/students.effects';
 import {  StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { AddStudentModalComponent } from './Components/Student-Components/add-student-modal/add-student-modal.component';
 import { FormsModule } from '@angular/forms';
-import { EditStudentModalComponent } from './Components/Student-Components/edit-student-modal/edit-student-modal.component';
 import { CourseDetailComponent } from './Components/Courses-Components/course-detail/course-detail.component';
 import { courseReducer } from './Store/Reducers/course.reducer';
 import { CoursesEffects } from './Store/Effects/courses.effects';
 import { CourseModalComponent } from './Components/Courses-Components/course-modal/course-modal.component';
 import { ConfirmationModalComponent } from './Components/Courses-Components/confirmation-modal/confirmation-modal.component';
-import { StudentService } from './Services/Facade_Services/student-service.service';
-
+import { CommonModule } from '@angular/common';
+import { StudentModalComponent } from './Components/Student-Components/student-modal/student-modal.component';
 
 
 @NgModule({
@@ -39,11 +37,10 @@ import { StudentService } from './Services/Facade_Services/student-service.servi
     CourseListComponent,
     MainComponentComponent,
     StudentDetailComponent,
-    AddStudentModalComponent,
-    EditStudentModalComponent,
     CourseDetailComponent,
     CourseModalComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    StudentModalComponent
     
   ],
   imports: [
@@ -55,6 +52,7 @@ import { StudentService } from './Services/Facade_Services/student-service.servi
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),
+    CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(), // ToastrModule added
     FormsModule
