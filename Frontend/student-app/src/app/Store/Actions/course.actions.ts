@@ -28,8 +28,8 @@ export const add_course_failed = createAction('[Course List Component] AddCourse
 export const update_course_success = createAction('[Course List Component] UpdateCourseSuccess',props<{course : Course}>() );
 export const update_course_failed = createAction('[Course List Component] UpdateCourseFailed');
 // add student to course 
-export const add_student_to_course_success = createAction('[Course List Component] AddStudentToCourseSuccess',props<{courses: Course[]}>());
+export const add_student_to_course_success = createAction('[Course List Component] AddStudentToCourseSuccess',props<{course: Course}>());
 export const add_student_to_course_failed = createAction('[Course List Component] AddStudentToCourseFailed');
 // remove student from course 
-export const remove_student_from_course_success = createAction('[Course List Component] RemoveStudentFromCourse',props<{courses: Course[]}>());
+export const remove_student_from_course_success = createAction('[Course List Component] RemoveStudentFromCourse',props<{course: Course}>());
 export const remove_student_from_course_failed = createAction('[Course List Component] RemoveStudentFromCourse');

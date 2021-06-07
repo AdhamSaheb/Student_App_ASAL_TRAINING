@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Course } from 'src/app/Models/Course.model';
+import { Student } from 'src/app/Models/Student.model';
 import { CourseService } from 'src/app/Services/Facade_Services/course.service';
+import { StudentService } from 'src/app/Services/Facade_Services/student-service.service';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { CourseDetailComponent } from '../course-detail/course-detail.component';
 import { CourseModalComponent } from '../course-modal/course-modal.component';
@@ -14,8 +16,9 @@ import { CourseModalComponent } from '../course-modal/course-modal.component';
 export class CourseListComponent implements OnInit {
   courses : Course[] ; 
   isLoading : boolean ; 
+  //students : Student[] ;
 
-  constructor(private courseService : CourseService, private ngbModal: NgbModal) { }
+  constructor(private courseService : CourseService, private studentService : StudentService , private ngbModal: NgbModal) { }
 
   ngOnInit(): void {
     this.courseService.getCourses().subscribe((courses)=> this.courses = courses);
@@ -26,7 +29,18 @@ export class CourseListComponent implements OnInit {
     const modalRef =  this.ngbModal.open(CourseDetailComponent,{backdrop: 'static'});
     //pass input to the component
     modalRef.componentInstance.course = course ;
-    //modalRef.result.then(())
+    modalRef.result.then((result) => {
+      switch(result['type']) {
+        case 'ADD' : {
+          this.courseService.addStudentToCourse(result['course'] , result['student']);
+          break; 
+        }
+        case 'DELETE' : {
+          this.courseService.removeStudentFromCourse(result['course'] , result['student']);
+          break; 
+        } ;
+      }
+    })
   }
 
   //opens the course modal to create one and send the course to the service 

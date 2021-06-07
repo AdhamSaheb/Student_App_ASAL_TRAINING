@@ -59,6 +59,24 @@ const _courseReducer = createReducer(
           courses: state.courses.filter(course => course.id != action.course.id),
           loading: false
         })),
+    /* Add Student To course */
+    on(
+      ACTIONS.add_student_to_course_success,
+      (state, action) =>
+      ({
+        ...state,
+        courses: state.courses.map(course => (course.id === action.course.id) ? action.course : course),
+        loading: false
+      })),
+    /* remove Student from course */
+    on(
+      ACTIONS.remove_student_from_course_success,
+      (state, action) =>
+      ({
+        ...state,
+        courses: state.courses.map(course => (course.id === action.course.id) ? action.course : course),
+        loading: false
+      })),
 
 
 );

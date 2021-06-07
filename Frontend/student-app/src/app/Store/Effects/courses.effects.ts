@@ -42,6 +42,24 @@ export class CoursesEffects {
                 ),
             ))
     ));
+    addStudentToCourse$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(ACTIONS.add_student_to_course),
+            mergeMap((action) => this.coursesHttpService.addStudentToCourse(action.course,action.student).pipe(
+                map((response) => ACTIONS.add_student_to_course_success({course : response})), // or use the action.course
+                catchError((err) => of(ACTIONS.add_student_to_course_failed())
+                ),
+            ))
+    ));
+    removeStudentFromCourse$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(ACTIONS.remove_student_from_course),
+            mergeMap((action) => this.coursesHttpService.removeStudentFromCourse(action.course,action.student).pipe(
+                map((response) => ACTIONS.remove_student_from_course_success({course : response})), // or use the action.course
+                catchError((err) => of(ACTIONS.remove_student_from_course_failed())
+                ),
+            ))
+    ));
 
 
 

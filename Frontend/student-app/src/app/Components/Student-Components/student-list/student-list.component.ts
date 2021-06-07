@@ -12,8 +12,9 @@ export class StudentListComponent implements OnInit {
   students: Student[];
   isLoading : boolean ;
   constructor( public _studentService : StudentService ) {}
+
   ngOnInit(): void {
-    this._studentService.getStudents().subscribe((studentsLoaded)=> {
+      this._studentService.getStudents().subscribe((studentsLoaded)=> {
       this.students =studentsLoaded ; 
     });
     this._studentService.getLoading().subscribe((isLoading) => {

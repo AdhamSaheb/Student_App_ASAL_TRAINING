@@ -12,7 +12,7 @@ export class Student {
     }
 
     toString() {
-        console.log("Stunet  : " + this.id +   " " + this.firstName )
+        return "Studnet  : " + this.id +   " " + this.firstName  ;
     }
 }
 

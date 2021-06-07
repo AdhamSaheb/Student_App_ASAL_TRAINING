@@ -26,6 +26,7 @@ import { courseReducer } from './Store/Reducers/course.reducer';
 import { CoursesEffects } from './Store/Effects/courses.effects';
 import { CourseModalComponent } from './Components/Courses-Components/course-modal/course-modal.component';
 import { ConfirmationModalComponent } from './Components/Courses-Components/confirmation-modal/confirmation-modal.component';
+import { StudentService } from './Services/Facade_Services/student-service.service';
 
 
 
