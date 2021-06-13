@@ -12,9 +12,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "student")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
 public class Student implements Serializable {
     private static final long serialVersionUID = -2343243243242432341L;
     @Id
